@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+
+	<title>DU calculator</title>
+</head>
+<body>
+  <div id="app" data-v-app="">
+    <div class="navline">
+      <div class="navblock"><a href="https://du.cpdev.lt/" class="router-link-active router-link-exact-active"
+          aria-current="page">Atlyginimo skaičiuoklė</a><a href="https://du.cpdev.lt/dienpinigiai"
+          class="">Dienpinigiai</a></div>
+    </div>
+    <header>
+      <h1 class="project-name">Atlyginimo skaičiuoklė</h1>
+    </header>
+    <main>
+      <div class="holder">
+        <div>
+          <div id="example" class="main-holder">
+            <div id="calculator" class="calculator one-calculator" data-v-766d4fe4="">
+              <div class="setting-container" data-v-766d4fe4="">
+                <div id="s-hour" class="salary-input-container noshow">
+                  <div class="salary-input-holder" data-v-d4a00cde="" data-v-c6a70c32=""><label for="amount-netto-hour"
+                      data-v-d4a00cde="">Val. atlygis į rankas</label>
+                      <input id="amount-netto-hour" type="text" data-v-d4a00cde="" style="background-color: white;"></div>
+                  <div class="salary-input-holder" data-v-d4a00cde="" data-v-c6a70c32=""><label for="amount-brutto-hour"
+                      data-v-d4a00cde="">Val. atlygis sutartije</label><input id="amount-brutto-hour" type="text"
+                      data-v-d4a00cde="" style="background-color: white;"></div>
+                  <div class="salary-input-holder" data-v-d4a00cde="" data-v-c6a70c32=""><label for="hours"
+                      data-v-d4a00cde="">Darbo val.kiekis</label><input id="hours" type="text" data-v-d4a00cde=""
+                      style="background-color: white;"></div>
+                </div>
+                <div class="salary-input-container" data-v-15472b7a="" data-v-766d4fe4="">
+                  <div class="salary-input-holder"  data-v-15472b7a="">
+                    <label for="amount-netto" data-v-d4a00cde="">Suma į rankas</label>
+                    <input id="amount-netto" type="number" data-v-d4a00cde="" value={{data.netto}} style="background-color: white;"></div>
+                  <div class="salary-input-holder" data-v-d4a00cde="" data-v-15472b7a="">
+                    <label for="amount-brutto" >Suma sutartyje</label>
+                    <input id="amount-brutto" type="number" value={{data.brutto}} style="background-color: white;"></div>
+                  <div class="salary-input-holder" data-v-d4a00cde="" data-v-15472b7a="">
+                    <label for="amount-total">Darbo vietos kaina</label>
+                    <input id="amount-total" type="number" readonly="" value={{data.total}}  style="background-color: lightgray;"></div>
+                </div>
+                <div id="calculatorInfo" class="calculator-input" >
+                  <div class="container" >
+                    <div id="s-pension" class="setting-box" >
+                      <div >
+                        <p class="title" >Papildoma pensijos įmoka</p>
+                      </div>
+                      <div data-value="0" class="choice active" data-v-c7ceb77c="">
+                        <p data-value="0" data-v-c7ceb77c="">0%</p>
+                      </div>
+                      <div data-value="1" class="choice" data-v-c7ceb77c="">
+                        <p data-value="1" data-v-c7ceb77c="">3%</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container">
+                    <div id="s-npd" class="setting-box">
+                      <div style="display: none;">
+                        <p class="title" data-v-c7ceb77c=""></p>
+                      </div>
+                      <div data-value="0" class="choice active" data-v-c7ceb77c="">
+                        <p data-value="0" data-v-c7ceb77c="">NPD taikyti</p>
+                      </div>
+                      <div data-value="1" class="choice" data-v-c7ceb77c="">
+                        <p data-value="1" data-v-c7ceb77c="">NPD netaikyti</p>
+                      </div>
+                    </div>
+                    <div id="s-floor" class="setting-box">
+                      <div data-value="0" class="choice active" data-v-c7ceb77c="">
+                        <p data-value="0" data-v-c7ceb77c="">Sodros grindys taikomos</p>
+                      </div>
+                      <div data-value="1" class="choice" data-v-c7ceb77c="">
+                        <p data-value="1" data-v-c7ceb77c="">Sodros grindys netaikomos</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container">
+                    <div id="s-set" class="setting-btn-container">
+                      <div class="div-btn">
+                        <div class="btn"></div>
+                        <p class="active">Paslepti nustatymus</p>
+                        <p class="">Parodyti nustatymus</p>
+                      </div>
+                    </div>
+                    <div id="s-val" class="setting-btn-container">
+                      <div class="div-btn" >
+                        <div class="btn" ></div>
+                        <p class="active" >Slepti val. skaičiavimus</p>
+                        <p class="" >Rodyti val. skaičiavimus</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container" >
+                    <div id="s-percent" class="setting-box long noshow temp"  >
+                      <div data-value="0" class="choice active">
+                        <p data-value="0" >Pilnai darbingas</p>
+                      </div>
+                      <div data-value="1" class="choice" >
+                        <p data-value="1" >Gaunu senatvės pensija</p>
+                      </div>
+                      <div data-value="2" class="choice" >
+                        <p data-value="2" >30-55 procentų darbingumo lygis</p>
+                      </div>
+                      <div data-value="3" class="choice" >
+                        <p data-value="3" >0-25 procentų darbingumo lygis</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container" >
+                    <div id="s-citizen" class="setting-box noshow temp" >
+                      <div data-v-c7ceb77c="" style="display: none;">
+                        <p class="title" ></p>
+                      </div>
+                      <div data-value="0" class="choice active" >
+                        <p data-value="0" >Lietuvos pilietis</p>
+                      </div>
+                      <div data-value="1" class="choice" >
+                        <p data-value="1" >Kitos šalies pilietis</p>
+                      </div>
+                    </div>
+                    <div id="s-term" class="setting-box noshow temp" >
+                      <div  style="display: none;">
+                        <p class="title" ></p>
+                      </div>
+                      <div data-value="0" class="choice active" >
+                        <p data-value="0" >Neterminuota sutartis</p>
+                      </div>
+                      <div data-value="1" class="choice" >
+                        <p data-value="1" >Terminuota sutartis</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container" >
+                    <div id="s-group" class="setting-box long noshow temp" >
+                      <div  style="display: none;">
+                        <p class="title" ></p>
+                      </div>
+                      <div data-value="0" class="choice active" >
+                        <p data-value="0" >I grupė</p>
+                      </div>
+                      <div data-value="1" class="choice" >
+                        <p data-value="1" >II grupė</p>
+                      </div>
+                      <div data-value="2" class="choice" >
+                        <p data-value="2" >III grupė</p>
+                      </div>
+                      <div data-value="3" class="choice" >
+                        <p data-value="3" >IV grupė</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button class="print-pdf noshow temp" >download PDF</button>
+              </div>
+              <div class="result-container" >
+                <div class="taxes" >
+                  <div >
+                    <h3 >Darbuotojo mokesčiai</h3>
+                  </div>
+                  <div class="tax-div" >
+                    <div class="left" >GPM</div>
+                    <div class="right" >
+                      <p >{{data.GPM}}</p>
+                    </div>
+                  </div>
+                  <div class="tax-div" >
+                    <div class="left" >PSD</div>
+                    <div class="right">
+                      <p >{{data.PSD}}</p>
+                    </div>
+                  </div>
+                  <div class="tax-div" >
+                    <div class="left" >VSD</div>
+                    <div class="right" >
+                      <p >{{data.VSD}}</p>
+                    </div>
+                  </div>
+                  <div class="tax-div" >
+                    <div class="left" >Papildoma įmoka pensijos kaupimui</div>
+                    <div class="right" >
+                      <p >{{data.add}}</p>
+                    </div>
+                  </div>
+                  <div >
+                    <h3 >Darbdavio mokesčiai</h3>
+                  </div>
+                  <div class="tax-div" >
+                    <div class="left" >Garantinis fondas</div>
+                    <div class="right" >
+                      <p >{{data.garant}}</p>
+                    </div>
+                  </div>
+                  <div class="tax-div" >
+                    <div class="left" >Ilgalaikio darbo išmokų fondas</div>
+                    <div class="right" >
+                      <p >{{data.longterm}}</p>
+                    </div>
+                  </div>
+                  <div class="tax-div" >
+                    <div class="left" >Nelaimingų atsitikimų darbe draudimas</div>
+                    <div class="right" >
+                      <p >{{data.incident}}</p>
+                    </div>
+                  </div>
+                  <div class="tax-div" >
+                    <div class="left" >Nedarbo socialinis draudimas</div>
+                    <div class="right" >
+                      <p >{{data.unemp}}</p>
+                    </div>
+                  </div>
+                  <div class="tax-div" >
+                    <div class="left" >Mokesčio suma dėl Sodros grindų</div>
+                    <div class="right" >
+                      <p >{{data.floor}}</p>
+                    </div>
+                  </div>
+                  <div class="tax-div" >
+                    <div class="left" >Viso</div>
+                    <div class="right" >
+                      <p >{{data.floor+data.unemp+data.incident+data.longterm+data.garant}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="info-container noshow">
+                <h3 data-v-65721c23="">Papildoma informacija</h3>
+                <div class="tax-div" >
+                  <div class="left" >Metinė alga iki mokesčių</div>
+                  <div class="right" >
+                    <p >0</p>
+                  </div>
+                </div>
+                <div class="tax-div" >
+                  <div class="left" >Metinė alga į rankas</div>
+                  <div class="right" >
+                    <p >0</p>
+                  </div>
+                </div>
+                <p >Žemiau esanti informacija yra preliminari ir sudaryta su prielaida, kad
+                  skaičiojamas DU yra pastovus, dirbama 5 dienos per savaitė ir mėnesije yra 21 darbo diena</p>
+                <div class="input-holder" >
+                  <div class="salary-input-holder" ><label for="sickdays"
+                      data-v-d4a00cde="">Ligos dienų kiekis</label><input id="sickdays" type="text" data-v-d4a00cde=""
+                      style="background-color: white;"></div>
+                </div>
+                <div class="tax-div" >
+                  <div class="left" >Darbdavis moka už ligonlapio pirmos 2 ligos dienos, suma iki
+                    mokesčių atskaitos</div>
+                  <div class="right" >
+                    <p >0</p>
+                  </div>
+                </div>
+                <div class="tax-div"  >
+                  <div class="left" data-v-ff20b780="">Darbdavis moka už ligonlapį pirmos 2 ligos dienos, suma po
+                    mokesčių</div>
+                  <div class="right" data-v-ff20b780="">
+                    <p data-v-ff20b780="">0</p>
+                  </div>
+                </div>
+                <div class="tax-div" data-v-ff20b780="" data-v-65721c23="">
+                  <div class="left" data-v-ff20b780="">Sodra moka už ligonlapį pradedant nuo 3 ligos dienos, suma iki
+                    mokesčių atskaitos</div>
+                  <div class="right" data-v-ff20b780="">
+                    <p data-v-ff20b780="">0</p>
+                  </div>
+                </div>
+                <div class="tax-div" data-v-ff20b780="" data-v-65721c23="">
+                  <div class="left" data-v-ff20b780="">Sodra moka už ligonlapį pradedant nuo 3 ligos dienos, suma po
+                    mokesčių</div>
+                  <div class="right" data-v-ff20b780="">
+                    <p data-v-ff20b780="">0</p>
+                  </div>
+                </div>
+                <div class="tax-div" data-v-ff20b780="" data-v-65721c23="">
+                  <div class="left" data-v-ff20b780="">Pasirinkus gauti išmoką iki vaikui sueis vieni metai, suma iki
+                    mokesčių per mėnesį</div>
+                  <div class="right" data-v-ff20b780="">
+                    <p data-v-ff20b780="">0</p>
+                  </div>
+                </div>
+                <div class="tax-div" data-v-ff20b780="" data-v-65721c23="">
+                  <div class="left" data-v-ff20b780="">Pasirinkus gauti išmoką iki vaikui sueis vieni metai, suma iki
+                    mokesčių per mėnesį</div>
+                  <div class="right" data-v-ff20b780="">
+                    <p data-v-ff20b780="">0</p>
+                  </div>
+                </div>
+                <div class="tax-div" data-v-ff20b780="" data-v-65721c23="">
+                  <div class="left" data-v-ff20b780="">Pasirinkus išmoką gauti iki vaikui sueis dveji metai, suma iki
+                    mokesčių už 1 metus per mėnesį</div>
+                  <div class="right" data-v-ff20b780="">
+                    <p data-v-ff20b780="">0</p>
+                  </div>
+                </div>
+                <div class="tax-div" data-v-ff20b780="" data-v-65721c23="">
+                  <div class="left" data-v-ff20b780="">Pasirinkus išmoką gauti iki vaikui sueis dveji metai, suma iki
+                    mokesčių už 1 metus per mėnesį</div>
+                  <div class="right" data-v-ff20b780="">
+                    <p data-v-ff20b780="">0</p>
+                  </div>
+                </div>
+                <div class="tax-div" data-v-ff20b780="" data-v-65721c23="">
+                  <div class="left" data-v-ff20b780="">Pasirinkus išmoką gauti iki vaikui sueis dveji metai, suma iki
+                    mokesčių už 2 metus per mėnesį</div>
+                  <div class="right" data-v-ff20b780="">
+                    <p data-v-ff20b780="">0</p>
+                  </div>
+                </div>
+                <div class="tax-div" data-v-ff20b780="" data-v-65721c23="">
+                  <div class="left" data-v-ff20b780="">Pasirinkus išmoką gauti iki vaikui sueis dveji metai, suma iki
+                    mokesčių už 2 metus per mėnesį</div>
+                  <div class="right" data-v-ff20b780="">
+                    <p data-v-ff20b780="">0</p>
+                  </div>
+                </div>
+                <p data-v-65721c23="">Maksimalus kompensuojamas uždarbis vaiko priežiūros išmokoms apskaičiuoti negali
+                  viršyti dviejų šalies vidutinių mėnesinių darbo užmokesčių, galiojusių už praeitą ketvirtį iki teisės
+                  gauti vaiko priežiūros išmoką atsiradimo dienos, dydžio. Skaičiuoklė "lubų" netaiko, nes "lubos" yra
+                  kintamos ir kiekviename ketvirtije skirtingos</p>
+                <p data-v-65721c23=""></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="{{url_for('static', filename='js/app.js')}}"></script>
+  </div>
+
+</body>
+</html>
