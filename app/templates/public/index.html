@@ -22,26 +22,26 @@
       <div class="holder">
         <div>
           <div id="example" class="main-holder">
-            <div id="calculator" class="calculator one-calculator" data-v-766d4fe4="">
-              <div class="setting-container" data-v-766d4fe4="">
+            <div id="calculator" class="calculator one-calculator" >
+              <div class="setting-container" >
                 <div id="s-hour" class="salary-input-container noshow">
-                  <div class="salary-input-holder" data-v-d4a00cde="" data-v-c6a70c32=""><label for="amount-netto-hour"
-                      data-v-d4a00cde="">Val. atlygis į rankas</label>
-                      <input id="amount-netto-hour" type="text" data-v-d4a00cde="" style="background-color: white;"></div>
-                  <div class="salary-input-holder" data-v-d4a00cde="" data-v-c6a70c32=""><label for="amount-brutto-hour"
-                      data-v-d4a00cde="">Val. atlygis sutartije</label><input id="amount-brutto-hour" type="text"
-                      data-v-d4a00cde="" style="background-color: white;"></div>
-                  <div class="salary-input-holder" data-v-d4a00cde="" data-v-c6a70c32=""><label for="hours"
-                      data-v-d4a00cde="">Darbo val.kiekis</label><input id="hours" type="text" data-v-d4a00cde=""
-                      style="background-color: white;"></div>
+                  <div class="salary-input-holder" >
+                    <label for="amount-netto-hour">Val. atlygis į rankas</label>
+                    <input id="amount-netto-hour" type="number" min="0" value={{data.hour_netto}} style="background-color: white;"></div>
+                  <div class="salary-input-holder">
+                    <label for="amount-brutto-hour">Val. atlygis sutartije</label>
+                    <input id="amount-brutto-hour" type="number" value={{data.hour_brutto}} min="0" style="background-color: white;"></div>
+                  <div class="salary-input-holder" data-v-d4a00cde="" data-v-c6a70c32="">
+                    <label for="hours">Darbo val.kiekis</label>
+                    <input id="hours" type="number" min="0" value={{data.hours}} style="background-color: white;"></div>
                 </div>
-                <div class="salary-input-container" data-v-15472b7a="" data-v-766d4fe4="">
-                  <div class="salary-input-holder"  data-v-15472b7a="">
+                <div class="salary-input-container">
+                  <div class="salary-input-holder">
                     <label for="amount-netto" data-v-d4a00cde="">Suma į rankas</label>
-                    <input id="amount-netto" type="number" data-v-d4a00cde="" value={{data.netto}} style="background-color: white;"></div>
+                    <input id="amount-netto" type="number" data-v-d4a00cde="" min="0" value={{data.netto}} style="background-color: white;"></div>
                   <div class="salary-input-holder" data-v-d4a00cde="" data-v-15472b7a="">
                     <label for="amount-brutto" >Suma sutartyje</label>
-                    <input id="amount-brutto" type="number" value={{data.brutto}} style="background-color: white;"></div>
+                    <input id="amount-brutto" type="number" min="0" value={{data.brutto}} style="background-color: white;"></div>
                   <div class="salary-input-holder" data-v-d4a00cde="" data-v-15472b7a="">
                     <label for="amount-total">Darbo vietos kaina</label>
                     <input id="amount-total" type="number" readonly="" value={{data.total}}  style="background-color: lightgray;"></div>
@@ -164,67 +164,67 @@
                   <div >
                     <h3 >Darbuotojo mokesčiai</h3>
                   </div>
-                  <div class="tax-div" >
+                  <div id="tax-GPM" class="tax-div" >
                     <div class="left" >GPM</div>
                     <div class="right" >
-                      <p >{{data.GPM}}</p>
+                      <p>0</p>
                     </div>
                   </div>
-                  <div class="tax-div" >
+                  <div id="tax-PSD" class="tax-div" >
                     <div class="left" >PSD</div>
                     <div class="right">
-                      <p >{{data.PSD}}</p>
+                      <p >0</p>
                     </div>
                   </div>
-                  <div class="tax-div" >
+                  <div id="tax-VSD" class="tax-div" >
                     <div class="left" >VSD</div>
                     <div class="right" >
-                      <p >{{data.VSD}}</p>
+                      <p >0</p>
                     </div>
                   </div>
-                  <div class="tax-div" >
+                  <div id="tax-add_tax" class="tax-div" >
                     <div class="left" >Papildoma įmoka pensijos kaupimui</div>
                     <div class="right" >
-                      <p >{{data.add}}</p>
+                      <p >0</p>
                     </div>
                   </div>
                   <div >
                     <h3 >Darbdavio mokesčiai</h3>
                   </div>
-                  <div class="tax-div" >
+                  <div id="tax-garant" class="tax-div" >
                     <div class="left" >Garantinis fondas</div>
                     <div class="right" >
-                      <p >{{data.garant}}</p>
+                      <p >0</p>
                     </div>
                   </div>
-                  <div class="tax-div" >
+                  <div id="tax-longterm" class="tax-div" >
                     <div class="left" >Ilgalaikio darbo išmokų fondas</div>
                     <div class="right" >
-                      <p >{{data.longterm}}</p>
+                      <p >0</p>
                     </div>
                   </div>
-                  <div class="tax-div" >
+                  <div id="tax-incident" class="tax-div" >
                     <div class="left" >Nelaimingų atsitikimų darbe draudimas</div>
                     <div class="right" >
                       <p >{{data.incident}}</p>
                     </div>
                   </div>
-                  <div class="tax-div" >
+                  <div id="tax-term" class="tax-div" >
                     <div class="left" >Nedarbo socialinis draudimas</div>
                     <div class="right" >
-                      <p >{{data.unemp}}</p>
+                      <p >0</p>
                     </div>
                   </div>
-                  <div class="tax-div" >
+                  <div id="tax-floor" class="tax-div" >
                     <div class="left" >Mokesčio suma dėl Sodros grindų</div>
                     <div class="right" >
-                      <p >{{data.floor}}</p>
+                      <p >0</p>
                     </div>
                   </div>
-                  <div class="tax-div" >
+                  <div id="tax-emp" class="tax-div" >
                     <div class="left" >Viso</div>
                     <div class="right" >
-                      <p >{{data.floor+data.unemp+data.incident+data.longterm+data.garant}}</p>
+                      <p >0</p>
                     </div>
                   </div>
                 </div>

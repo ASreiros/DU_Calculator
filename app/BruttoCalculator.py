@@ -1,5 +1,4 @@
 
-
 class BruttoCalculator:
 	def __init__(self):
 		self.brutto = 0
@@ -23,12 +22,47 @@ class BruttoCalculator:
 		self.agreement_term_tax = 0
 		self.sodra_floor_value = 0
 
+	def clean_state(self):
+		self.brutto = 0
+		self.netto = 0
+		self.NPD = 0
+		self.GPM = 0
+		self.GPM_setting = 0
+		self.citizen = True
+		self.PSD = 0
+		self.VSD = 0
+		self.add_tax_setting = False
+		self.add_tax = 0
+		self.SODRA = 0
+		self.EMP = 0
+		self.garant = 0
+		self.longterm = 0
+		self.incident = 0
+		self.agreement_term_tax = 0
+		self.sodra_floor_value = 0
+
 	def run_calculation(self):
 		self.calculate_GPM()
 		self.caclucate_Sodra()
 		self.netto = self.brutto - self.GPM - self.SODRA
-		return self.netto
-		print("-------------")
+		return {
+			'brutto': round(self.brutto, 2),
+			'netto': round(self.netto, 2),
+			'NPD': self.NPD,
+			"sodra": self.SODRA,
+			'taxes': {
+			'GPM': self.GPM,
+			'PSD': self.PSD,
+			'VSD': self.VSD,
+			'add_tax': self.add_tax,
+			"garant": self.garant,
+			"longterm": self.longterm,
+			"incident": self.incident,
+			"term": self.agreement_term_tax,
+			"floor": self.sodra_floor_value,
+			"emp": self.EMP,
+			}
+		}
 
 	def calculate_NPD(self):
 		if self.GPM_setting == 0:
