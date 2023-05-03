@@ -26,6 +26,8 @@ class BruttoCalculator:
 	def run_calculation(self):
 		self.calculate_GPM()
 		self.caclucate_Sodra()
+		self.netto = self.brutto - self.GPM - self.SODRA
+		return self.netto
 		print("-------------")
 
 	def calculate_NPD(self):
@@ -83,5 +85,5 @@ class BruttoCalculator:
 		self.calculate_add_tax()
 		self.calculate_VSD()
 		self.calculate_PSD()
-		self.SODRA = self.add_tax + self.VSD + self.PSD
+		self.SODRA = round(self.add_tax + self.VSD + self.PSD, 2)
 		print("SODRA:", self.SODRA)
