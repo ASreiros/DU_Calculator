@@ -15,7 +15,6 @@ function collect(id){
     nettoHour = parseFloat(document.getElementById("amount-netto-hour").value);
     bruttoHour = parseFloat(document.getElementById("amount-brutto-hour").value);
     hour = parseFloat(document.getElementById("hours").value);
-    console.log(netto, brutto)
     if(isNaN(netto)||isNaN(brutto)||isNaN(nettoHour)||isNaN(bruttoHour)|| isNaN(hour) || brutto< 0 || netto < 0 || bruttoHour < 0 || nettoHour < 0 || hour < 1){
         console.log(isNaN(netto), isNaN(brutto));
         netto = 0
@@ -33,10 +32,19 @@ function collect(id){
         bruttoHour:bruttoHour,
         nettoHour:nettoHour,
         hour:hour,
+        // add:document.querySelector(`#s-add>.active`).dataset.value,
+        // npd:document.querySelector(`#s-npd>.active`).dataset.value,
+        // floor:document.querySelector(`#s-floor>.active`).dataset.value,     
     }
+
+    document.querySelectorAll(".setting-box").forEach(box=>{
+        setting = box.id
+        data[setting] = document.querySelector(`#${setting}>.active`).dataset.value
+    })
+    console.log(data);
+
     
     if(netto>0 || brutto > 0 || nettoHour > 0 || bruttoHour > 0){
-        console.log(data);
         fetch(`${window.origin}/calculate`,{
             method: "POST",
             credentials: "include",
@@ -67,7 +75,6 @@ function collect(id){
                 taxes = data["taxes"]
                 taxesList = Object.keys(taxes)
                 taxesList.forEach(tax=>{
-                    console.log(tax);
                     document.querySelector(`#tax-${tax} p`).innerHTML = data["taxes"][tax]
                 })
             })
@@ -92,7 +99,6 @@ buttons.forEach(btn => {
     btn.addEventListener('click', ()=>{
         if (!btn.classList.contains('active')){
             parentId = btn.parentElement.id;
-            console.log(parentId);
             siblings = document.querySelectorAll(`#${parentId} .choice`)
             siblings.forEach(el=>{
                 el.classList.remove('active')

@@ -6,39 +6,46 @@ class BruttoCalculator:
 
 		self.NPD = 0
 		self.GPM = 0
+		self.NPD_setting = True
 		self.GPM_setting = 0  # (0:"Pilnai darbingas", 1:"Gaunu senatvės pensija" 2:"30-55 procentų darbingumo lygis"3:"0-25 procentų darbingumo lygis"4:Netaikyti GPM )
-
 		self.citizen = True # Ar yra Lietuvos pilietis. įtakuoja PSD
-		# self.add_tax_setting # True 3% / False 0%
+		self.add_tax_setting = False # Ar taikyti pensijos kaupima itakuoja self.add_tax 0.
+		self.agreement_term_tax = False
+		self.floor_setting = True
+		self.sodra_group = 0
+
 		self.PSD = 0
 		self.VSD = 0
-		self.add_tax_setting = False # Ar taikyti pensijos kaupima itakuoja self.add_tax
 		self.add_tax = 0
 		self.SODRA = 0
 		self.EMP = 0
 		self.garant = 0
 		self.longterm = 0
 		self.incident = 0
-		self.agreement_term_tax = 0
 		self.sodra_floor_value = 0
 
 	def clean_state(self):
 		self.brutto = 0
 		self.netto = 0
+
 		self.NPD = 0
 		self.GPM = 0
+		self.NPD_setting = True
 		self.GPM_setting = 0
 		self.citizen = True
+		self.add_tax_setting = False
+		self.agreement_term_tax = False
+		self.floor_setting = True
+		self.sodra_group = 0
+
 		self.PSD = 0
 		self.VSD = 0
-		self.add_tax_setting = False
 		self.add_tax = 0
 		self.SODRA = 0
 		self.EMP = 0
 		self.garant = 0
 		self.longterm = 0
 		self.incident = 0
-		self.agreement_term_tax = 0
 		self.sodra_floor_value = 0
 
 	def run_calculation(self):
@@ -58,34 +65,36 @@ class BruttoCalculator:
 			"garant": self.garant,
 			"longterm": self.longterm,
 			"incident": self.incident,
-			"term": self.agreement_term_tax,
 			"floor": self.sodra_floor_value,
 			"emp": self.EMP,
 			}
 		}
 
 	def calculate_NPD(self):
-		if self.GPM_setting == 0:
-			if self.brutto <= 840:
-				self.NPD = 625
-			elif self.brutto <= 1704:
-				self.NPD = 625 - 0.42*(self.brutto - 840)
+		print(self.NPD_setting)
+		if self.NPD_setting:
+			print(self.NPD_setting, self.GPM_setting)
+			if self.GPM_setting == 0:
+				if self.brutto <= 840:
+					self.NPD = 625
+				elif self.brutto <= 1704:
+					self.NPD = 625 - 0.42*(self.brutto - 840)
+				else:
+					self.NPD = 400-0.18*(self.brutto - 642)
+			elif self.GPM_setting == 1:
+				self.NPD = 1005
+			elif self.GPM_setting == 2:
+				self.NPD = 935
+			elif self.GPM_setting == 3:
+				self.NPD = 1005
 			else:
-				self.NPD = 400-0.18*(self.brutto - 642)
-		elif self.GPM_setting == 1:
-			self.NPD = 1005
-		elif self.GPM_setting == 2:
-			self.NPD = 935
-		elif self.GPM_setting == 3:
-			self.NPD = 1005
-		else:
-			self.NPD = 0
+				self.NPD = 0
 
-		if self.NPD < 0:
-			self.NPD = 0
-		else:
-			self.NPD = round(self.NPD, 2)
-		print("NPD:", self.NPD)
+			if self.NPD < 0:
+				self.NPD = 0
+			else:
+				self.NPD = round(self.NPD, 2)
+			print("NPD:", self.NPD)
 
 	def calculate_GPM(self):
 		self.calculate_NPD()
@@ -97,6 +106,7 @@ class BruttoCalculator:
 
 	def calculate_add_tax(self):
 		if self.add_tax_setting:
+			print("add tax")
 			self.add_tax = round(self.brutto * 0.03, 2)
 		else:
 			self.add_tax = 0
