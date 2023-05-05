@@ -10,11 +10,6 @@
 </head>
 <body>
   <div id="app" data-v-app="">
-    <div class="navline">
-      <div class="navblock"><a href="https://du.cpdev.lt/" class="router-link-active router-link-exact-active"
-          aria-current="page">Atlyginimo skaičiuoklė</a><a href="https://du.cpdev.lt/dienpinigiai"
-          class="">Dienpinigiai</a></div>
-    </div>
     <header>
       <h1 class="project-name">Atlyginimo skaičiuoklė</h1>
     </header>
@@ -27,24 +22,24 @@
                 <div id="s-hour" class="salary-input-container noshow">
                   <div class="salary-input-holder" >
                     <label for="amount-netto-hour">Val. atlygis į rankas</label>
-                    <input id="amount-netto-hour" type="number" min="0" value={{data.hour_netto}} style="background-color: white;"></div>
+                    <input id="amount-netto-hour" type="number" min="0" value=0 style="background-color: white;"></div>
                   <div class="salary-input-holder">
                     <label for="amount-brutto-hour">Val. atlygis sutartije</label>
-                    <input id="amount-brutto-hour" type="number" value={{data.hour_brutto}} min="0" style="background-color: white;"></div>
+                    <input id="amount-brutto-hour" type="number" value=0 min="0" style="background-color: white;"></div>
                   <div class="salary-input-holder" data-v-d4a00cde="" data-v-c6a70c32="">
                     <label for="hours">Darbo val.kiekis</label>
-                    <input id="hours" type="number" min="0" value={{data.hours}} style="background-color: white;"></div>
+                    <input id="hours" type="number" min="0" value=160 style="background-color: white;"></div>
                 </div>
                 <div class="salary-input-container">
                   <div class="salary-input-holder">
                     <label for="amount-netto" data-v-d4a00cde="">Suma į rankas</label>
-                    <input id="amount-netto" type="number" data-v-d4a00cde="" min="0" value={{data.netto}} style="background-color: white;"></div>
+                    <input id="amount-netto" type="number" data-v-d4a00cde="" min="0" value=0 style="background-color: white;"></div>
                   <div class="salary-input-holder" data-v-d4a00cde="" data-v-15472b7a="">
                     <label for="amount-brutto" >Suma sutartyje</label>
-                    <input id="amount-brutto" type="number" min="0" value={{data.brutto}} style="background-color: white;"></div>
+                    <input id="amount-brutto" type="number" min="0" value=0 style="background-color: white;"></div>
                   <div class="salary-input-holder" data-v-d4a00cde="" data-v-15472b7a="">
                     <label for="amount-total">Darbo vietos kaina</label>
-                    <input id="amount-total" type="number" readonly="" value={{data.total}}  style="background-color: lightgray;"></div>
+                    <input id="amount-total" type="number" readonly="" value=0  style="background-color: lightgray;"></div>
                 </div>
                 <div id="calculatorInfo" class="calculator-input" >
                   <div class="container" >
@@ -206,10 +201,10 @@
                   <div id="tax-incident" class="tax-div" >
                     <div class="left" >Nelaimingų atsitikimų darbe draudimas</div>
                     <div class="right" >
-                      <p >{{data.incident}}</p>
+                      <p >0</p>
                     </div>
                   </div>
-                  <div id="tax-garant" class="tax-div" >
+                  <div id="tax-term" class="tax-div" >
                     <div class="left" >Nedarbo socialinis draudimas</div>
                     <div class="right" >
                       <p >0</p>
@@ -228,103 +223,6 @@
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="info-container noshow">
-                <h3 data-v-65721c23="">Papildoma informacija</h3>
-                <div class="tax-div" >
-                  <div class="left" >Metinė alga iki mokesčių</div>
-                  <div class="right" >
-                    <p >0</p>
-                  </div>
-                </div>
-                <div class="tax-div" >
-                  <div class="left" >Metinė alga į rankas</div>
-                  <div class="right" >
-                    <p >0</p>
-                  </div>
-                </div>
-                <p >Žemiau esanti informacija yra preliminari ir sudaryta su prielaida, kad
-                  skaičiojamas DU yra pastovus, dirbama 5 dienos per savaitė ir mėnesije yra 21 darbo diena</p>
-                <div class="input-holder" >
-                  <div class="salary-input-holder" ><label for="sickdays"
-                      data-v-d4a00cde="">Ligos dienų kiekis</label><input id="sickdays" type="text" data-v-d4a00cde=""
-                      style="background-color: white;"></div>
-                </div>
-                <div class="tax-div" >
-                  <div class="left" >Darbdavis moka už ligonlapio pirmos 2 ligos dienos, suma iki
-                    mokesčių atskaitos</div>
-                  <div class="right" >
-                    <p >0</p>
-                  </div>
-                </div>
-                <div class="tax-div"  >
-                  <div class="left" data-v-ff20b780="">Darbdavis moka už ligonlapį pirmos 2 ligos dienos, suma po
-                    mokesčių</div>
-                  <div class="right" data-v-ff20b780="">
-                    <p data-v-ff20b780="">0</p>
-                  </div>
-                </div>
-                <div class="tax-div" data-v-ff20b780="" data-v-65721c23="">
-                  <div class="left" data-v-ff20b780="">Sodra moka už ligonlapį pradedant nuo 3 ligos dienos, suma iki
-                    mokesčių atskaitos</div>
-                  <div class="right" data-v-ff20b780="">
-                    <p data-v-ff20b780="">0</p>
-                  </div>
-                </div>
-                <div class="tax-div" data-v-ff20b780="" data-v-65721c23="">
-                  <div class="left" data-v-ff20b780="">Sodra moka už ligonlapį pradedant nuo 3 ligos dienos, suma po
-                    mokesčių</div>
-                  <div class="right" data-v-ff20b780="">
-                    <p data-v-ff20b780="">0</p>
-                  </div>
-                </div>
-                <div class="tax-div" data-v-ff20b780="" data-v-65721c23="">
-                  <div class="left" data-v-ff20b780="">Pasirinkus gauti išmoką iki vaikui sueis vieni metai, suma iki
-                    mokesčių per mėnesį</div>
-                  <div class="right" data-v-ff20b780="">
-                    <p data-v-ff20b780="">0</p>
-                  </div>
-                </div>
-                <div class="tax-div" data-v-ff20b780="" data-v-65721c23="">
-                  <div class="left" data-v-ff20b780="">Pasirinkus gauti išmoką iki vaikui sueis vieni metai, suma iki
-                    mokesčių per mėnesį</div>
-                  <div class="right" data-v-ff20b780="">
-                    <p data-v-ff20b780="">0</p>
-                  </div>
-                </div>
-                <div class="tax-div" data-v-ff20b780="" data-v-65721c23="">
-                  <div class="left" data-v-ff20b780="">Pasirinkus išmoką gauti iki vaikui sueis dveji metai, suma iki
-                    mokesčių už 1 metus per mėnesį</div>
-                  <div class="right" data-v-ff20b780="">
-                    <p data-v-ff20b780="">0</p>
-                  </div>
-                </div>
-                <div class="tax-div" data-v-ff20b780="" data-v-65721c23="">
-                  <div class="left" data-v-ff20b780="">Pasirinkus išmoką gauti iki vaikui sueis dveji metai, suma iki
-                    mokesčių už 1 metus per mėnesį</div>
-                  <div class="right" data-v-ff20b780="">
-                    <p data-v-ff20b780="">0</p>
-                  </div>
-                </div>
-                <div class="tax-div" data-v-ff20b780="" data-v-65721c23="">
-                  <div class="left" data-v-ff20b780="">Pasirinkus išmoką gauti iki vaikui sueis dveji metai, suma iki
-                    mokesčių už 2 metus per mėnesį</div>
-                  <div class="right" data-v-ff20b780="">
-                    <p data-v-ff20b780="">0</p>
-                  </div>
-                </div>
-                <div class="tax-div" data-v-ff20b780="" data-v-65721c23="">
-                  <div class="left" data-v-ff20b780="">Pasirinkus išmoką gauti iki vaikui sueis dveji metai, suma iki
-                    mokesčių už 2 metus per mėnesį</div>
-                  <div class="right" data-v-ff20b780="">
-                    <p data-v-ff20b780="">0</p>
-                  </div>
-                </div>
-                <p data-v-65721c23="">Maksimalus kompensuojamas uždarbis vaiko priežiūros išmokoms apskaičiuoti negali
-                  viršyti dviejų šalies vidutinių mėnesinių darbo užmokesčių, galiojusių už praeitą ketvirtį iki teisės
-                  gauti vaiko priežiūros išmoką atsiradimo dienos, dydžio. Skaičiuoklė "lubų" netaiko, nes "lubos" yra
-                  kintamos ir kiekviename ketvirtije skirtingos</p>
-                <p data-v-65721c23=""></p>
               </div>
             </div>
           </div>

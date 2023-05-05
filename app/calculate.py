@@ -5,6 +5,7 @@ calculator = BruttoCalculator()
 
 def settings(obj):
 	calculator.clean_state()
+	calculator.hour = obj['hour']
 	if obj['s-npd'] == '0':
 		calculator.NPD_setting = False
 	if obj['s-citizen'] == '0':
@@ -13,6 +14,8 @@ def settings(obj):
 		calculator.add_tax_setting = True
 	if obj['s-floor'] == '0':
 		calculator.floor_setting = False
+	if obj['s-term'] == '1':
+		calculator.agreement_term = True
 	calculator.GPM_setting = int(obj['s-percent'])
 	calculator.sodra_group = int(obj['s-group'])
 
@@ -33,7 +36,7 @@ def calculate_brutto(obj):
 	while not flag_netto and counter < 30:
 		calculator.brutto = brutto
 		result = calculator.run_calculation()
-		try_netto = result['netto']
+		try_netto = result['amount-netto']
 		if try_netto != netto:
 			brutto = brutto - try_netto + netto
 			counter += 1
@@ -41,3 +44,13 @@ def calculate_brutto(obj):
 			flag_netto = True
 			return result
 	return result
+
+
+def calculate_netto_hour(obj):
+	obj['brutto'] = round(obj['bruttoHour'] * obj['hour'])
+	return calculate_netto(obj)
+
+
+def calculate_brutto_hour(obj):
+	obj['netto'] = round(obj['nettoHour'] * obj['hour'])
+	return calculate_brutto(obj)

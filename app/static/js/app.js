@@ -31,10 +31,7 @@ function collect(id){
         brutto:brutto,
         bruttoHour:bruttoHour,
         nettoHour:nettoHour,
-        hour:hour,
-        // add:document.querySelector(`#s-add>.active`).dataset.value,
-        // npd:document.querySelector(`#s-npd>.active`).dataset.value,
-        // floor:document.querySelector(`#s-floor>.active`).dataset.value,     
+        hour:hour,     
     }
 
     document.querySelectorAll(".setting-box").forEach(box=>{
@@ -63,15 +60,13 @@ function collect(id){
             response.json().then(function(info){
                 console.log(info);
                 data = info[0]['data']
-                if(id == "amount-netto"){
-                    document.getElementById("amount-brutto").value = data['brutto'];
-                } else if((id == "amount-brutto")){
-                    user_change_flag = false
-                    document.getElementById("amount-netto").value = data['netto'];
-                    user_change_flag = true 
-                } else{
-                    console.log("something went wrong. Probably wrong id");
-                }
+                document.querySelectorAll('.salary-input-holder>input').forEach(input=>{
+                    console.log(input.id, id);
+                    if(input.id != id && input.id != "hours"){
+                        console.log(input.id);
+                        document.getElementById(input.id).value = data[input.id]; 
+                    }
+                })
                 taxes = data["taxes"]
                 taxesList = Object.keys(taxes)
                 taxesList.forEach(tax=>{
@@ -88,8 +83,10 @@ function collect(id){
 elements = document.querySelectorAll('.salary-input-holder>input')
 elements.forEach(element => {
     element.addEventListener('input', function(){
-        collect(element.id)
-        last_change = element.id
+        if(element.id != "hours"){
+            last_change = element.id
+        }
+        collect(last_change)     
     });   
 });
 

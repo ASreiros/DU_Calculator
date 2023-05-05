@@ -45,8 +45,18 @@ def calculate_salary():
             'data': calculate.calculate_brutto(req)
         }
         answer = make_response(jsonify(data, 200))
+    elif req['id'] == 'amount-netto-hour':
+        data = {
+            'data': calculate.calculate_brutto_hour(req)
+        }
+        answer = make_response(jsonify(data, 200))
+    elif req['id'] == 'amount-brutto-hour':
+        data = {
+            'data': calculate.calculate_netto_hour(req)
+        }
+        answer = make_response(jsonify(data, 200))
     else:
         print(req['id'])
-        answer = make_response(jsonify({'message':"JSON received"}, 200))
+        answer = make_response(jsonify({'message':"JSON received, but nothing was done,wrong id"}, 200))
 
     return answer
