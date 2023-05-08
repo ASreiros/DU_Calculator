@@ -15,6 +15,10 @@
     gap: 20px
 }
 
+a:link, a:active, a:visited, a:hover {
+    color:inherit
+}
+
 .btn-box {
     display: flex;
     flex-direction: row;

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/daily.css')}}">
+	<title>Dienpinigiai</title>
+</head>
+
+<body>
+  <div id="app">
+    <header>
+      <div class="navline">
+        <div class="navblock">
+          <a href="{{'/'}}">Atlyginimo skaičiuoklė</a>
+        </div>
+      </div>
+      <h1 class="project-name">Dienpinigiai</h1>
+    </header>
+    <main>
+      <div class="dienpinigiai-holder">
+        <div class="holder">
+          <div class="select-holder" >
+            <label for="country" >Pasirinkite šalį</label>
+            <select name="country" id="country">
+              <option value="-1" disabled selected value> -- Pasirinkite šalį -- </option>
+            {% for key, value in data.items() %}
+              <option value={{value}}>{{key}}</option>
+            {% endfor %}
+            </select>
+          </div>
+          <div class="small-holder">
+            <div class="salary-input-holder">
+              <label for="numberofdays">Dienų kiekis</label>
+              <input id="numberofdays" type="number" min="1" value="1" style="background-color: white;">
+            </div>
+            <div class="salary-input-holder">
+              <label for="daily">Dienpinigių dydis</label>
+              <input id="daily" type="text" readonly="" style="background-color: lightgray;">
+            </div>
+          </div>
+          <div class="small-holder">
+            <div class="salary-input-holder">
+              <label for="suma">Suma</label>
+              <input id="suma" type="text" readonly="" style="background-color: lightgray;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="{{url_for('static', filename='js/daily.js')}}"></script>
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+h1 {
+    font-weight: 500;
+    font-size: 2.6rem;
+    text-align: center;
+    color: #00008b
+}
+
+header, main {
+    color: #41a1e4;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none
+}
+
+.navline {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-end
+}
+
+.navline .navblock {
+    color: #41a1e4;
+    margin: 5px 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px
+}
+
+a:link, a:active, a:visited, a:hover {
+    color:inherit
+}
+
+
+.dienpinigiai-holder {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 680px;
+    min-height: 15vh;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px #41a1e433, 0 6px 20px #41a1e430;
+    transition: height .5s;
+    padding: 20px;
+    border: 1px solid rgba(65, 161, 228, .2)
+}
+
+.dienpinigiai-holder>.holder {
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+}
+
+
+.salary-input-holder input, .salary-input-holder input:focus {
+    width: 200px;
+    height: 40px;
+    font-size: 20px;
+    text-align: right;
+    color: #00008b;
+    padding: 10px;
+    border-color: #41a1e4;
+}
+
+.dienpinigiai-holder .holder .select-holder {
+    display: flex;
+    flex-direction: column;
+}
+
+ label {
+    font-size: 22px;
+    text-align: center;
+    max-width: 200px;
+    width: 100%;
+    
+}
+
+.salary-input-holder {
+    display: flex;
+    flex-direction: column
+}
+
+.dienpinigiai-holder .holder .select-holder select, .dienpinigiai-holder .holder .select-holder select:focus {
+    height: 60px;
+    word-wrap: break-word;
+    font-size: 18px;
+    text-align: left;
+    color: #00008b;
+    padding: 10px;
+    border-color: #41a1e4;
+}
+
+.dienpinigiai-holder .holder .small-holder {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between
+}
+
+
+
+*, *:before, *:after {
+    box-sizing: border-box;
+    margin: 0;
+    position: relative;
+    font-weight: 400
+}
+
+body {
+    min-height: 100vh;
+    color: var(--color-text);
+    background: var(--color-background);
+    transition: color .5s, background-color .5s;
+    line-height: 1.6;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 15px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}

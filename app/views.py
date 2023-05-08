@@ -1,35 +1,12 @@
 from app import app
 from flask import render_template, jsonify, request, make_response
 from app import calculate
+from app import daily
 
 
 @app.route("/")
 def home():
-    data = {
-        'hour_netto': 0,
-        'hour_brutto': 0,
-        'hours': 160,
-        'netto': 0,
-        'brutto': 0,
-        'total': 0,
-        'NPD': True,
-        'sodra_floor': True,
-        'show_settings': False,
-        'show_hour': False,
-        'citizen': True,
-        'term_agreement': True,
-        'sodra_group': 1,
-        'GPM': 0,
-        'PSD': 0,
-        'VSD': 0,
-        'add': 0,
-        'garant': 0,
-        'longterm': 0,
-        'incident': 0,
-        'unemp': 0,
-        'floor': 0,
-    }
-    return render_template("public/index.html", data=data)
+    return render_template("public/index.html")
 
 @app.route("/calculate", methods=["POST"])
 def calculate_salary():
@@ -59,4 +36,20 @@ def calculate_salary():
         print(req['id'])
         answer = make_response(jsonify({'message':"JSON received, but nothing was done,wrong id"}, 200))
 
+    return answer
+
+@app.route("/dienpinigiai")
+def dienpinigiai():
+    daily_dict = daily.provide_dict()
+    print(daily_dict)
+    return render_template("public/daily.html", data=daily_dict)
+
+@app.route("/countallowance", methods=["POST"])
+def count_allowance():
+    req = request.get_json()
+    print(req)
+    data = {
+        'data': daily.count_daily(req)
+    }
+    answer = make_response(jsonify(data, 200))
     return answer
