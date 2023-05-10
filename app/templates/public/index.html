@@ -5,6 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+  <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico')}}">
 
 	<title>DU calculator</title>
 </head>
@@ -85,20 +86,20 @@
                     <div id="s-set" class="setting-btn-container">
                       <div class="div-btn">
                         <div class="btn"></div>
-                        <p class="active">Paslepti nustatymus</p>
-                        <p class="">Parodyti nustatymus</p>
+                        <p class="active">Parodyti nustatymus</p>
+                        <p class="">Paslepti nustatymus</p>
                       </div>
                     </div>
                     <div id="s-val" class="setting-btn-container">
                       <div class="div-btn" >
                         <div class="btn" ></div>
                         <p class="active" >Slepti val. skaičiavimus</p>
-                        <p class="" >Rodyti val. skaičiavimus</p>
+                        <p class="">Rodyti val. skaičiavimus</p>
                       </div>
                     </div>
                   </div>
                   <div class="container" >
-                    <div id="s-percent" class="setting-box long noshow temp"  >
+                    <div id="s-percent" class="setting-box long temp"  >
                       <div data-value="0" class="choice active">
                         <p data-value="0" >Pilnai darbingas</p>
                       </div>
@@ -114,7 +115,7 @@
                     </div>
                   </div>
                   <div class="container" >
-                    <div id="s-citizen" class="setting-box noshow temp" >
+                    <div id="s-citizen" class="setting-box temp" >
                       <div data-v-c7ceb77c="" style="display: none;">
                         <p class="title" ></p>
                       </div>
@@ -125,7 +126,7 @@
                         <p data-value="0" >Kitos šalies pilietis</p>
                       </div>
                     </div>
-                    <div id="s-term" class="setting-box noshow temp" >
+                    <div id="s-term" class="setting-box temp" >
                       <div  style="display: none;">
                         <p class="title" ></p>
                       </div>
@@ -138,7 +139,7 @@
                     </div>
                   </div>
                   <div class="container" >
-                    <div id="s-group" class="setting-box long noshow temp" >
+                    <div id="s-group" class="setting-box long temp" >
                       <div  style="display: none;">
                         <p class="title" ></p>
                       </div>
@@ -157,7 +158,7 @@
                     </div>
                   </div>
                 </div>
-<!--                <button class="print-pdf noshow temp" >download PDF</button>-->
+               <button id="pdf-button" class="pdf">download PDF</button>
               </div>
               <div class="result-container" >
                 <div class="taxes" >

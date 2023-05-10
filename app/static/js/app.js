@@ -16,7 +16,6 @@ function collect(id){
     bruttoHour = parseFloat(document.getElementById("amount-brutto-hour").value);
     hour = parseFloat(document.getElementById("hours").value);
     if(isNaN(netto)||isNaN(brutto)||isNaN(nettoHour)||isNaN(bruttoHour)|| isNaN(hour) || brutto< 0 || netto < 0 || bruttoHour < 0 || nettoHour < 0 || hour < 1){
-        console.log(isNaN(netto), isNaN(brutto));
         netto = 0
         brutto = 0
         nettoHour = 0
@@ -38,7 +37,6 @@ function collect(id){
         setting = box.id
         data[setting] = document.querySelector(`#${setting}>.active`).dataset.value
     })
-    console.log(data);
 
     
     if(netto>0 || brutto > 0 || nettoHour > 0 || bruttoHour > 0){
@@ -58,12 +56,9 @@ function collect(id){
             }
 
             response.json().then(function(info){
-                console.log(info);
                 data = info[0]['data']
                 document.querySelectorAll('.salary-input-holder>input').forEach(input=>{
-                    console.log(input.id, id);
                     if(input.id != id && input.id != "hours"){
-                        console.log(input.id);
                         document.getElementById(input.id).value = data[input.id]; 
                     }
                 })
@@ -72,6 +67,11 @@ function collect(id){
                 taxesList.forEach(tax=>{
                     document.querySelector(`#tax-${tax} p`).innerHTML = data["taxes"][tax]
                 })
+                if (Number(data['amount-brutto']) > 0){
+                    document.querySelector('#pdf-button').style.display = "block"
+                } else{
+                    document.querySelector('#pdf-button').style.display = "none"
+                }
             })
 
 
@@ -125,5 +125,14 @@ settings.forEach(btn => {
     })
 })
 
+document.querySelector('#pdf-button').addEventListener("click", function(){
 
+const aElement = document.createElement('a');
+aElement.setAttribute('download', 'pdf');
+const href = "/getpdf"
+aElement.href = href;
+aElement.setAttribute('target', '_blank');
+aElement.click();
+aElement.remove();
+});
 

@@ -335,7 +335,7 @@ h3 {
     margin-bottom: 20px
 }
 
-.calculator .print-pdf {
+.calculator .pdf {
     padding: 10px;
     font-size: 16px;
     background-color: #41a1e4;
@@ -343,7 +343,8 @@ h3 {
     cursor: pointer;
     width: 100%;
     text-transform: uppercase;
-    border: 1px solid #3691d3
+    border: 1px solid #3691d3;
+    display: none;
 }
 
 .noshow {
