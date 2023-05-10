@@ -64,7 +64,6 @@ def create_pdf():
 	pdf.set_margins(30, 10, 30)
 	pdf.add_font(fname='app/static/font/DejaVuSansCondensed.ttf', family='dejavu', uni=True)
 	pdf.set_font('dejavu', size=14)
-	print(calculator)
 	sodra_group = ['I grupė', 'II grupė', 'III grupė', 'IV grupė']
 	work_group = ['Pilnai darbingas', 'Senatvės pensija', '30-55% darb.', '0-25% darb.']
 	pdf.write_html(f"""

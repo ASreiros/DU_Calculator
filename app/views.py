@@ -11,7 +11,6 @@ def home():
 @app.route("/calculate", methods=["POST"])
 def calculate_salary():
     req = request.get_json()
-    print(req)
     if req['id'] == 'amount-brutto':
         data = {
             'data': calculate.calculate_netto(req)
@@ -33,7 +32,6 @@ def calculate_salary():
         }
         answer = make_response(jsonify(data, 200))
     else:
-        print(req['id'])
         answer = make_response(jsonify({'message':"JSON received, but nothing was done,wrong id"}, 200))
 
     return answer
@@ -48,13 +46,11 @@ def provide_pdf():
 @app.route("/dienpinigiai")
 def dienpinigiai():
     daily_dict = daily.provide_dict()
-    print(daily_dict)
     return render_template("public/daily.html", data=daily_dict)
 
 @app.route("/countallowance", methods=["POST"])
 def count_allowance():
     req = request.get_json()
-    print(req)
     data = {
         'data': daily.count_daily(req)
     }

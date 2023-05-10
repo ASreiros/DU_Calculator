@@ -84,9 +84,7 @@ class BruttoCalculator:
 		}
 
 	def calculate_NPD(self):
-		print(self.NPD_setting)
 		if self.NPD_setting:
-			print(self.NPD_setting, self.GPM_setting)
 			if self.GPM_setting == 0:
 				if self.brutto <= 840:
 					self.NPD = 625
@@ -107,43 +105,36 @@ class BruttoCalculator:
 				self.NPD = 0
 			else:
 				self.NPD = round(self.NPD, 2)
-			print("NPD:", self.NPD)
 
 	def calculate_GPM(self):
 		self.calculate_NPD()
 		self.GPM = round((self.brutto - self.NPD)*0.2, 2)
 		if self.GPM < 0:
 			self.GPM = 0
-		print("GPM:", self.GPM)
 
 
 	def calculate_add_tax(self):
 		if self.add_tax_setting:
-			print("add tax")
 			self.add_tax = round(self.brutto * 0.03, 2)
 		else:
 			self.add_tax = 0
-		print("add tax:", self.add_tax)
 
 	def calculate_VSD(self):
 		self.VSD = round(self.brutto*0.1252, 2)
 		if self.VSD > 11298.20:
 			self.VSD = 11298.20
-		print("VSD", self.VSD)
 
 	def calculate_PSD(self):
 		if self.citizen:
 			self.PSD = round(self.brutto*0.0698, 2)
 		else:
 			self.PSD = 0
-		print("PSD:", self.PSD)
 
 	def caclucate_Sodra(self):
 		self.calculate_add_tax()
 		self.calculate_VSD()
 		self.calculate_PSD()
 		self.SODRA = round(self.add_tax + self.VSD + self.PSD, 2)
-		print("SODRA:", self.SODRA)
 
 	def calculate_employer_taxes(self):
 		if 840 > self.brutto > 0:
