@@ -1,6 +1,7 @@
 # DU_Calculator
 This is salary calculator according to Lithuanian law 2023
-It is hosted on https://salary-asreiros.koyeb.app/
+It can calculate salary befote taxes, given the after taxes amount and vice versa.
+Additional functionality in the top right link allows to find daily allowance in business trips according to Lithuanian Law.
 
 ## Link to working demo
 This project is hosted: https://salary-asreiros.koyeb.app/
