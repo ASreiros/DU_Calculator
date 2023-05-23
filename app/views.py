@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template, jsonify, request, make_response,  send_file
+from flask import render_template, jsonify, request, make_response,  send_file, json
 from app import calculate
 from app import daily
 
@@ -37,9 +37,11 @@ def calculate_salary():
     return answer
 
 
-@app.route("/getpdf")
-def provide_pdf():
-    pdf = calculate.create_pdf()
+@app.route("/getpdf/<data>")
+def provide_pdf(data):
+    info = json.loads(data)
+    print(info)
+    pdf = calculate.create_pdf(info)
     return send_file(pdf, as_attachment=True)
 
 

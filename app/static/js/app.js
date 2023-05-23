@@ -129,7 +129,25 @@ document.querySelector('#pdf-button').addEventListener("click", function(){
 
 const aElement = document.createElement('a');
 aElement.setAttribute('download', 'pdf');
-const href = "/getpdf"
+
+
+
+obj = {
+    'netto':parseFloat(document.getElementById("amount-netto").value),
+    'brutto': parseFloat(document.getElementById("amount-brutto").value),
+    'nettoHour':parseFloat(document.getElementById("amount-netto-hour").value),
+    'bruttoHour':parseFloat(document.getElementById("amount-brutto-hour").value),
+    'hour':parseFloat(document.getElementById("hours").value),
+
+}
+
+document.querySelectorAll(".setting-box").forEach(box=>{
+    setting = box.id
+    obj[setting] = document.querySelector(`#${setting}>.active`).dataset.value
+})
+data = JSON.stringify(obj)
+
+const href = `/getpdf/${data}`
 aElement.href = href;
 aElement.setAttribute('target', '_blank');
 aElement.click();

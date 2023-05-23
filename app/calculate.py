@@ -1,11 +1,10 @@
 from app.BruttoCalculator import BruttoCalculator
 from fpdf import FPDF
 
-calculator = BruttoCalculator()
-
 
 def settings(obj):
-	calculator.clean_state()
+	print("settings obj", obj)
+	calculator = BruttoCalculator()
 	calculator.hour = obj['hour']
 	if obj['s-npd'] == '0':
 		calculator.NPD_setting = False
@@ -19,16 +18,19 @@ def settings(obj):
 		calculator.agreement_term = True
 	calculator.GPM_setting = int(obj['s-percent'])
 	calculator.sodra_group = int(obj['s-group'])
+	return calculator
 
 
 def calculate_netto(obj):
-	settings(obj)
+	calculator = settings(obj)
 	calculator.brutto = float(obj["brutto"])
-	return calculator.run_calculation()
+	result = calculator.run_calculation()
+	del calculator
+	return result
 
 
 def calculate_brutto(obj):
-	settings(obj)
+	calculator = settings(obj)
 	flag_netto = False
 	netto = obj['netto']
 	brutto = round(netto * 1.6529, 2)
@@ -44,6 +46,7 @@ def calculate_brutto(obj):
 		else:
 			flag_netto = True
 			return result
+	del calculator
 	return result
 
 
@@ -58,7 +61,10 @@ def calculate_brutto_hour(obj):
 
 
 
-def create_pdf():
+def create_pdf(obj):
+	calculator = settings(obj)
+	calculator.brutto = float(obj["brutto"])
+	calculator.run_calculation()
 	pdf = FPDF()
 	pdf.add_page()
 	pdf.set_margins(30, 10, 30)
@@ -182,4 +188,5 @@ def create_pdf():
 	""")
 	name = 'paskaičiavimas.pdf'
 	pdf.output(f"app/{name}")
+	del calculator
 	return name
