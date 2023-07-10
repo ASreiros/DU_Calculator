@@ -30,8 +30,8 @@ This project is hosted: https://salary-asreiros.koyeb.app/
 ## Technology used
 * Python (Flask) for backend
 * HTML, CSS, Javascript for front end.
-* All calculations, even simplest ones are done at backend, frontend responcible only for the visual part  
-* Full project requirments can be seen at requirment.txt
+* All calculations, even simplest ones are done at backend, frontend responsible only for the visual part  
+* Full project requirements can be seen at requirement.txt
 
 
 ## Start
@@ -41,6 +41,5 @@ This project is hosted: https://salary-asreiros.koyeb.app/
 * Anton Sokolkin 
 * email: ansokolkin@gmail.com
 * github: https://github.com/ASreiros
-* Motto: "Will work for food"
 
 
