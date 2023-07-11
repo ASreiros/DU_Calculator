@@ -40,7 +40,6 @@ def calculate_salary():
 @app.route("/getpdf/<data>")
 def provide_pdf(data):
     info = json.loads(data)
-    print(info)
     pdf = calculate.create_pdf(info)
     return send_file(pdf, as_attachment=True)
 
